@@ -27,10 +27,10 @@ return new class extends Migration
                 ->nullable();
 
             $table->enum('situacao', [
-                'A CONFERIR',
+                'A_CONFERIR',
                 'CONFERIDO',
-                'FALTANTE EXCEDENTE'
-            ])->default('A CONFERIR');
+                'FALTANTE_EXCEDENTE'
+            ])->default('A_CONFERIR');
 
             $table->text('observacao')
                 ->nullable();
