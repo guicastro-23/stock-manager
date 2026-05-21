@@ -68,7 +68,7 @@ php artisan serve
 npm run dev
 ```
 
-### Axesssar no navegador a URL. 
+### Acessar no navegador a URL. 
 ```
 http://127.0.0.1:8000
 ```
