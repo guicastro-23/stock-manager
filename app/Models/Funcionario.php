@@ -21,4 +21,9 @@ class Funcionario extends Model
         return $this->hasOne(User::class);
     }
 
+    public function contagensResponsavel()
+    {
+        return $this->hasMany(ContagemEstoque::class, 'responsavel_id');
+    }
+
 }
