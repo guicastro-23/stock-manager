@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ContagemEstoqueController;
+use App\Http\Controllers\ItemContagemEstoqueController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -23,5 +25,19 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::middleware('auth')->group(function(){
+    Route::get('/contagens/{contagem}', [ContagemEstoqueController::class, 'show'])
+        ->name('contagens.show');
+    Route::patch('/itens-contagem-estoque/{item}',[ItemContagemEstoqueController::class, 'update'])
+        ->name('itens-contagem.update');
+    Route::patch('/itens-contagem-estoque/{item}/observacao',[ItemContagemEstoqueController::class, 'updateObservacao'])
+        ->name('itens-contagem.observacao');
+    Route::patch('/contagens-estoque/{contagem}/status',[ContagemEstoqueController::class, 'updateStatus'])
+        ->name('contagens-estoque.status');
+
+
+});
+
 
 require __DIR__.'/auth.php';
