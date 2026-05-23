@@ -35,6 +35,10 @@ Route::middleware('auth')->group(function(){
         ->name('itens-contagem.observacao');
     Route::patch('/contagens-estoque/{contagem}/status',[ContagemEstoqueController::class, 'updateStatus'])
         ->name('contagens-estoque.status');
+    Route::post('/contagens-estoque', [ContagemEstoqueController::class, 'store'])
+        ->name('contagens-estoque.store');
+    Route::get('/contagens-estoque/create', [ContagemEstoqueController::class, 'create'])
+        ->name('contagens-estoque.create');
 
 
 });

@@ -109,7 +109,9 @@ export default function Show({ auth, contagem }) {
                                 {contagem.data_agendada && (
                                     <>
                                         {' · '}
-                                        <span>{new Date(contagem.data_agendada).toLocaleDateString('pt-BR')}</span>
+                                         <span>
+                                            {contagem.data_agendada.split('-').reverse().join('/')}
+                                        </span>
                                     </>
                                 )}
                             </p>
