@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ProdutoController;
+use App\Http\Controllers\Api\EstoqueProdutoController;
 use App\Http\Controllers\Api\ContagemEstoqueController;
 use App\Http\Controllers\Api\ItemContagemEstoqueController;
 
@@ -13,6 +14,10 @@ Route::get('/produtos/{id}', [ProdutoController::class, 'show']);
 Route::put('/produtos/{id}', [ProdutoController::class, 'update']);
 Route::delete('/produtos/{id}', [ProdutoController::class, 'destroy']);
 
+//Api de Estoque de Produtos
+Route::get('/estoques-produtos', [EstoqueProdutoController::class, 'index']);
+Route::get('/estoques-produtos/{produto}', [EstoqueProdutoController::class, 'show']);
+Route::put('/estoques-produtos/{produto}', [EstoqueProdutoController::class, 'update']);
 
 
 // Api de Contagem 
