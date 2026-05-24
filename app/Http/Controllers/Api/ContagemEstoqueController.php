@@ -17,4 +17,25 @@ class ContagemEstoqueController extends Controller
 
         return response()->json($contagens);
     }
+
+    public function show($id)
+        {
+            $contagem = ContagemEstoque::with([
+                'responsavel',
+                'itens.produto',
+            ])->findOrFail($id);
+
+            $itensAgrupados = $contagem->itens->groupBy('situacao');
+
+            return response()->json([
+                'contagem' => [
+                    'id' => $contagem->id,
+                    'codigo' => $contagem->codigo,
+                    'data_agendada' => $contagem->data_agendada,
+                    'status' => $contagem->status,
+                    'responsavel' => $contagem->responsavel,
+                ],
+                'itens_por_situacao' => $itensAgrupados,
+            ]);
+        }
 }
