@@ -59,4 +59,22 @@ class ItemContagemEstoqueController extends Controller
             'item' => $item,
         ]);
     }
+
+    public function confirmar(int $id)
+    {
+        $item = ItemContagemEstoque::findOrFail($id);
+
+        if ($item->quantidade_contada == $item->quantidade_sistema) {
+            $item->situacao = 'CONFERIDO';
+        } else {
+            $item->situacao = 'FALTANTE_EXCEDENTE';
+        }
+
+        $item->save();
+
+        return response()->json([
+            'message' => 'Item confirmado com sucesso.',
+            'item' => $item,
+        ]);
+    }
 }

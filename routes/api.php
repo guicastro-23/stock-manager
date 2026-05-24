@@ -17,4 +17,5 @@ Route::patch('/contagens-estoque/{id}/status', [ContagemEstoqueController::class
 Route::get('/contagens-estoque/{contagens}/itens', [ItemContagemEstoqueController::class, 'index']);
 Route::get('/contagens-estoque/{contagens}/itens/situacao', [ItemContagemEstoqueController::class, 'situacao']);
 Route::patch('/itens-contagem-estoque/{id}', [ItemContagemEstoqueController::class, 'update']);
+Route::post('/itens-contagem-estoque/{id}/confirmar', [ItemContagemEstoqueController::class, 'confirmar']);
 
