@@ -4,7 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ProdutoController;
 use App\Http\Controllers\Api\EstoqueProdutoController;
 use App\Http\Controllers\Api\ContagemEstoqueController;
+use App\Http\Controllers\Api\FuncionarioController;
 use App\Http\Controllers\Api\ItemContagemEstoqueController;
+
+// Api de Funcionario 
+Route::get('/funcionarios', [FuncionarioController::class, 'index']);
+Route::post('/funcionarios', [FuncionarioController::class, 'store']);
+Route::get('/funcionarios/{id}', [FuncionarioController::class, 'show']);
+Route::put('/funcionarios/{id}', [FuncionarioController::class, 'update']);
+Route::delete('/funcionarios/{id}', [FuncionarioController::class, 'destroy']);
 
 // Api de Produto
 Route::get('/produtos', [ProdutoController::class, 'index']);
