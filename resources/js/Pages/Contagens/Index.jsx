@@ -1,5 +1,5 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, router } from '@inertiajs/react';
 
 export default function Index({ auth, contagens }) {
 
@@ -19,6 +19,14 @@ export default function Index({ auth, contagens }) {
                 return 'bg-gray-100 text-gray-700';
         }
     }
+
+    const handleDelete = (id) => {
+        if (confirm('Deseja excluir esta contagem?')) {
+            router.delete(route('contagens-estoque.destroy', id));
+        }
+    };
+
+
 
     return (
         <AuthenticatedLayout user={auth.user}>
@@ -128,6 +136,12 @@ export default function Index({ auth, contagens }) {
                                         >
                                             Abrir
                                         </Link>
+                                        <button
+                                            onClick={() => handleDelete(contagem.id)}
+                                            className="inline-flex items-center gap-2 bg-red-50 hover:bg-red-100 text-red-700 px-4 py-2 rounded-lg text-sm font-semibold transition-all"
+                                        >
+                                            Excluir
+                                        </button>
                                     </td>
                                 </tr>
                             ))}

@@ -41,6 +41,9 @@ Route::middleware('auth')->group(function(){
         ->name('contagens-estoque.create');
     Route::get('/contagens-estoque', [ContagemEstoqueController::class, 'index'])
         ->name('contagens-estoque.index');
+    Route::delete('/contagens-estoque/{id}', [ContagemEstoqueController::class,'destroy'])
+    ->name('contagens-estoque.destroy');
+    
 
 
 });

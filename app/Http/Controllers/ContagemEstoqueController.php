@@ -120,4 +120,19 @@ class ContagemEstoqueController extends Controller
 
         return redirect()->route('contagens.show', $contagem->id);
     }
+
+    public function destroy($id)
+    {
+        $contagem = ContagemEstoque::findOrFail($id);
+
+        if ($contagem->status === 'FINALIZADA') {
+            return redirect()->back()
+                ->with('error', 'Não é possível excluir uma contagem finalizada.');
+        }
+
+        $contagem->delete();
+
+        return redirect()->back()
+            ->with('success', 'Contagem excluída com sucesso.');
+    }
 }
