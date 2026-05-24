@@ -13,6 +13,38 @@ use Illuminate\Support\Facades\DB;
 
 class ContagemEstoqueController extends Controller
 {
+        public function index(Request $request)
+    {
+        $query = ContagemEstoque::query()
+            ->with('responsavel')
+            ->withCount('itens');
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        if ($request->filled('responsavel_id')) {
+            $query->where('responsavel_id', $request->responsavel_id);
+        }
+
+        if ($request->filled('data_inicio')) {
+            $query->whereDate('data_agendada', '>=', $request->data_inicio);
+        }
+
+        if ($request->filled('data_fim')) {
+            $query->whereDate('data_agendada', '<=', $request->data_fim);
+        }
+
+        $contagens = $query
+            ->orderByDesc('data_agendada')
+            ->get();
+
+        return Inertia::render('Contagens/Index', [
+            'contagens' => $contagens,
+        ]);
+    }
+
+
     public function show(ContagemEstoque $contagem)
     {
         $contagem->load([

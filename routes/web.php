@@ -39,6 +39,8 @@ Route::middleware('auth')->group(function(){
         ->name('contagens-estoque.store');
     Route::get('/contagens-estoque/create', [ContagemEstoqueController::class, 'create'])
         ->name('contagens-estoque.create');
+    Route::get('/contagens-estoque', [ContagemEstoqueController::class, 'index'])
+        ->name('contagens-estoque.index');
 
 
 });
