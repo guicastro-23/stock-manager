@@ -118,10 +118,12 @@ class ContagemEstoqueController extends Controller
             return $contagem;
         });
 
-        return redirect()->route('contagens.show', $contagem->id);
-    }
+        return redirect()
+                ->route('dashboard')
+                ->with('success', 'Conferência criada com sucesso!');
+        }
 
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $contagem = ContagemEstoque::findOrFail($id);
 
