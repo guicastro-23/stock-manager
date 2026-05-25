@@ -85,15 +85,7 @@ export default function Login({ status, canResetPassword }) {
 
                 {/* BOTÃO */}
                 <div className="mt-4 flex items-center justify-end">
-                    {canResetPassword && (
-                        <Link
-                            href={route('password.request')}
-                            className="text-sm text-gray-600 underline"
-                        >
-                            Esqueci minha senha
-                        </Link>
-                    )}
-
+                   
                     <PrimaryButton className="ms-4" disabled={processing}>
                         Entrar
                     </PrimaryButton>
