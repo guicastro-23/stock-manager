@@ -1,5 +1,32 @@
 # Stock Manager 
 
+Docker e Localmente 
+
+## Executando com Docker
+
+### Pré-requisitos
+
+- Docker
+- Docker Compose
+
+### Subir a aplicação
+
+```
+docker compose up -d --build
+```
+
+### Configurar o banco
+
+```
+docker compose exec stock-manager php artisan migrate:fresh --seed
+```
+
+### Acessar a aplicação
+
+```
+http://localhost:8080
+```
+
 ## Como executar o projeto localmente 
 
 ### Pré Requisitos 
