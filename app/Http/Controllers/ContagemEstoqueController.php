@@ -17,7 +17,8 @@ class ContagemEstoqueController extends Controller
         {   
             $query = ContagemEstoque::query()
                 ->with('responsavel')
-                ->withCount('itens');
+                ->withCount('itens')
+                ->where('responsavel_id', $request->user()->funcionario_id);
 
             if ($request->filled('status')) {
                 $query->where('status', $request->status);
@@ -46,8 +47,12 @@ class ContagemEstoqueController extends Controller
     }
 
 
-    public function show(ContagemEstoque $contagem)
+    public function show(Request $request, ContagemEstoque $contagem)
     {
+        if ($contagem->responsavel_id !== $request->user()->funcionario_id) {
+            abort(403);
+        }
+
         $contagem->load([
             'responsavel',
             'itens.produto',
@@ -60,6 +65,9 @@ class ContagemEstoqueController extends Controller
 
     public function updateStatus(Request $request, ContagemEstoque $contagem)
     {
+        if ($contagem->responsavel_id !== $request->user()->funcionario_id) {
+            abort(403);
+        }
         $data = $request->validate([
             'status' => ['required', 'in:EM_ANDAMENTO,FINALIZADA'],
         ]);
@@ -123,9 +131,14 @@ class ContagemEstoqueController extends Controller
                 ->with('success', 'Conferência criada com sucesso!');
         }
 
-    public function destroy(int $id)
+    public function destroy(Request $request, int $id)
     {
         $contagem = ContagemEstoque::findOrFail($id);
+
+          if ($contagem->responsavel_id !== $request->user()->funcionario_id) {
+                abort(403);
+            }
+
 
         if ($contagem->status === 'FINALIZADA') {
             return redirect()->back()

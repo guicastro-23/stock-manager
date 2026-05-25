@@ -42,7 +42,7 @@ export default function Index({ auth, contagens }) {
                         </h1>
 
                         <p className="text-gray-500 mt-1">
-                            Gerencie e acompanhe as conferências agendadas
+                             Conferências de {auth.user.funcionario?.nome}
                         </p>
                     </div>
 
