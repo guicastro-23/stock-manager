@@ -2,7 +2,7 @@
 
 ## Como executar o projeto localmente 
 
-### 1. Pré Requisitos 
+### Pré Requisitos 
 
 - PHP 8.2+ 
 - Node.js 20+
@@ -73,4 +73,13 @@ npm run dev
 http://127.0.0.1:8000
 ```
 
+## APIs REST
 
+A aplicação possui APIs REST para: 
+
+- Funcionários
+- Produtos
+- Estoque de produtos
+- Contagens de estoque
+- Itens da contagem
+- Autenticação
