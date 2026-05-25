@@ -45,4 +45,8 @@ Route::patch('/itens-contagem-estoque/{id}', [ItemContagemEstoqueController::cla
 Route::post('/itens-contagem-estoque/{id}/confirmar', [ItemContagemEstoqueController::class, 'confirmar']);
 
 // Api de Auntenticacao 
+
+Route::middleware('auth:sanctum')->get('/auth/me', [AuthController::class,'me']);
+Route::middleware('auth:sanctum')->post('/auth/logout', [AuthController::class,'logout']);
 Route::post('/auth/registrar', [AuthController::class, 'registrar']);
+Route::post('/auth/login', [AuthController::class,'login']);
