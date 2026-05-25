@@ -17,12 +17,7 @@ export default function AuthenticatedLayout({ header, children }) {
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="flex h-16 justify-between">
                         <div className="flex">
-                            <div className="flex shrink-0 items-center">
-                                <Link href="/">
-                                    <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-                                </Link>
-                            </div>
-
+                            
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink
                                     href={route('dashboard')}
@@ -30,6 +25,23 @@ export default function AuthenticatedLayout({ header, children }) {
                                 >
                                     Dashboard
                                 </NavLink>
+
+                                <NavLink
+                                    href={route('contagens-estoque.index')}
+                                    active={route().current('contagens-estoque.index')}
+                                >
+                                    Lista de Conferência
+                                </NavLink>
+
+                                <NavLink
+                                    href={route('contagens-estoque.create')}
+                                    active={route().current('contagens-estoque.create')}
+                                >
+                                    Nova Conferência
+                                </NavLink>
+
+
+
                             </div>
                         </div>
 
@@ -61,11 +73,11 @@ export default function AuthenticatedLayout({ header, children }) {
                                     </Dropdown.Trigger>
 
                                     <Dropdown.Content>
-                                        <Dropdown.Link
+                                        {/* <Dropdown.Link
                                             href={route('profile.edit')}
                                         >
                                             Profile
-                                        </Dropdown.Link>
+                                        </Dropdown.Link> */}
                                         <Dropdown.Link
                                             href={route('logout')}
                                             method="post"
@@ -134,6 +146,22 @@ export default function AuthenticatedLayout({ header, children }) {
                         >
                             Dashboard
                         </ResponsiveNavLink>
+
+                        <ResponsiveNavLink
+                            href={route('contagens-estoque.index')}
+                            active={route().current('contagens-estoque.index')}
+                        >
+                            Lista de Conferência
+                        </ResponsiveNavLink>
+
+                        <ResponsiveNavLink
+                            href={route('contagens-estoque.create')}
+                            active={route().current('contagens-estoque.create')}
+                        >
+                            Nova Conferência
+                        </ResponsiveNavLink>
+
+
                     </div>
 
                     <div className="border-t border-gray-200 pb-1 pt-4 dark:border-gray-600">
@@ -147,9 +175,9 @@ export default function AuthenticatedLayout({ header, children }) {
                         </div>
 
                         <div className="mt-3 space-y-1">
-                            <ResponsiveNavLink href={route('profile.edit')}>
+                            {/* <ResponsiveNavLink href={route('profile.edit')}>
                                 Profile
-                            </ResponsiveNavLink>
+                            </ResponsiveNavLink> */}
                             <ResponsiveNavLink
                                 method="post"
                                 href={route('logout')}

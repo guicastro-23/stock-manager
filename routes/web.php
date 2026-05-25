@@ -42,7 +42,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/contagens-estoque', [ContagemEstoqueController::class, 'index'])
         ->name('contagens-estoque.index');
     Route::delete('/contagens-estoque/{id}', [ContagemEstoqueController::class,'destroy'])
-    ->name('contagens-estoque.destroy');
+        ->name('contagens-estoque.destroy');
     
 
 
