@@ -1,5 +1,6 @@
-<?php 
+<?php
 
+use App\Http\Controllers\Api\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ProdutoController;
 use App\Http\Controllers\Api\EstoqueProdutoController;
@@ -43,3 +44,5 @@ Route::get('/contagens-estoque/{contagens}/itens/situacao', [ItemContagemEstoque
 Route::patch('/itens-contagem-estoque/{id}', [ItemContagemEstoqueController::class, 'update']);
 Route::post('/itens-contagem-estoque/{id}/confirmar', [ItemContagemEstoqueController::class, 'confirmar']);
 
+// Api de Auntenticacao 
+Route::post('/auth/registrar', [AuthController::class, 'registrar']);
