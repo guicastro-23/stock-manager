@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContagemEstoqueController;
 use App\Http\Controllers\ItemContagemEstoqueController;
 use App\Http\Controllers\ProfileController;
+use App\Models\ContagemEstoque;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -17,7 +18,11 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('Dashboard', [
+        'totalContagens' => ContagemEstoque::count(),
+        'emAndamento' => ContagemEstoque::where('status', 'EM_ANDAMENTO')->count(),
+        'finalizadas' => ContagemEstoque::where('status', 'FINALIZADA')->count(),
+    ]);
 })->middleware(['auth'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
